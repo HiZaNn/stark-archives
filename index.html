@@ -34,8 +34,11 @@ h3{font-size:18px;margin:16px 0 12px}
 .stat strong{display:block;font-size:24px;margin-top:8px}
 .stat span{font-size:10px;color:var(--cyan);letter-spacing:1px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.card{padding:12px}
-.avatar{height:76px;border-radius:12px;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);margin-bottom:11px}
+.card{padding:12px;overflow:hidden}
+.avatar{height:190px;position:relative;overflow:hidden;border-radius:12px;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);margin-bottom:11px;border:1px solid #a78bfa45}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s ease}
+.card:hover .avatar img{transform:scale(1.04)}
+.fallback{font-size:42px}
 .card h3{font-size:16px;margin:5px 0}
 .card p{font-size:12px;margin:7px 0 11px;overflow-wrap:anywhere}
 .card .tag{font-size:9px;letter-spacing:1px}
@@ -47,7 +50,8 @@ input{width:100%;background:#151329;color:var(--text);border:1px solid #ffffff28
 .timeline-item p{font-size:12px;margin:5px 0 10px}
 .empty{color:var(--muted);background:#15132988;border:1px dashed #ffffff2a;padding:18px;border-radius:14px;font-size:13px}
 footer{text-align:center;padding:26px 18px 36px;color:var(--muted);font-size:11px;line-height:1.6}
-@media(min-width:600px){main{padding:24px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:32px}.avatar{height:100px}}
+@media(min-width:600px){main{padding:24px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:32px}.avatar{height:230px}}
+@media(max-width:360px){.avatar{height:155px}.card{padding:9px}}
 </style>
 </head>
 <body>
@@ -98,7 +102,8 @@ footer{text-align:center;padding:26px 18px 36px;color:var(--muted);font-size:11p
 <h3>◷ Watchlist</h3><div id="watchlist"></div>
 </section>
 </main>
-<footer>Unofficial fan-made project, not affiliated with Marvel or Disney. Character names and related properties belong to their respective owners.<br>Stark Archives v2.0 · Built by a fan, for fans.</footer>
+<footer>Unofficial fan-made project, not affiliated with Marvel or Disney. Character names and related properties belong to their respective owners.<br>Stark Archives v3.0 · Built by a fan, for fans.</footer>
+
 <script>
 const characters = [
 {id:"ironman",name:"Iron Man",alias:"Tony Stark",power:"Genius inventor · Powered armor",team:"Avengers",icon:"⚙️",featured:true},
@@ -154,6 +159,7 @@ const characters = [
 {id:"redskull",name:"Red Skull",alias:"Johann Schmidt",power:"Strategic genius · Leadership",team:"Villains",icon:"☠️"},
 {id:"kingpin",name:"Kingpin",alias:"Wilson Fisk",power:"Criminal empire · Physical strength",team:"Villains",icon:"♟️"}
 ];
+
 const movies=[
 {year:2008,title:"Iron Man"},
 {year:2012,title:"The Avengers"},
@@ -165,46 +171,240 @@ const movies=[
 {year:2022,title:"Doctor Strange in the Multiverse of Madness"},
 {year:2022,title:"Black Panther: Wakanda Forever"}
 ];
-function load(key){try{return JSON.parse(localStorage.getItem(key))||[]}catch(e){return[]}}
+
+function load(key){
+  try{return JSON.parse(localStorage.getItem(key))||[]}
+  catch(e){return[]}
+}
+
 let favourites=load("stark-favourites");
 let watchlist=load("stark-watchlist");
 let activeTeam="All";
-function save(){try{localStorage.setItem("stark-favourites",JSON.stringify(favourites));localStorage.setItem("stark-watchlist",JSON.stringify(watchlist))}catch(e){}}
+const imageByName={};
+
+function normalizeName(name){
+  return name.toLowerCase().replace(/[^a-z0-9]/g,"");
+}
+
+/* Alternative names used by the image library */
+const imageAliases={
+  ironman:["Iron Man","Ironman"],
+  captainamerica:["Captain America"],
+  thor:["Thor"],
+  hulk:["Hulk"],
+  blackwidow:["Black Widow"],
+  hawkeye:["Hawkeye"],
+  falcon:["Falcon","Captain America II"],
+  warmachine:["War Machine"],
+  vision:["Vision"],
+  antman:["Ant-Man","Ant Man"],
+  wasp:["Wasp"],
+  captainmarvel:["Captain Marvel"],
+  strange:["Doctor Strange"],
+  wanda:["Scarlet Witch"],
+  wong:["Wong"],
+  america:["America Chavez"],
+  moonknight:["Moon Knight"],
+  spiderman:["Spider-Man","Spider Man"],
+  miles:["Spider-Man","Miles Morales"],
+  daredevil:["Daredevil"],
+  punisher:["Punisher"],
+  luke:["Luke Cage"],
+  jessica:["Jessica Jones"],
+  shangchi:["Shang-Chi"],
+  blackpanther:["Black Panther"],
+  shuri:["Shuri"],
+  starlord:["Star-Lord","Star Lord"],
+  gamora:["Gamora"],
+  rocket:["Rocket Raccoon","Rocket"],
+  groot:["Groot"],
+  drax:["Drax the Destroyer","Drax"],
+  nebula:["Nebula"],
+  betaraybill:["Beta Ray Bill"],
+  loki:["Loki"],
+  hela:["Hela"],
+  valkyrie:["Valkyrie"],
+  eternity:["Eternity"],
+  reed:["Mister Fantastic","Mr Fantastic"],
+  sue:["Invisible Woman"],
+  johnny:["Human Torch"],
+  ben:["Thing"],
+  wolverine:["Wolverine"],
+  storm:["Storm"],
+  magneto:["Magneto"],
+  cyclops:["Cyclops"],
+  thanos:["Thanos"],
+  ultron:["Ultron"],
+  doom:["Doctor Doom"],
+  greengoblin:["Green Goblin"],
+  kang:["Kang"],
+  redskull:["Red Skull"],
+  kingpin:["Kingpin"]
+};
+
+function save(){
+  try{
+    localStorage.setItem("stark-favourites",JSON.stringify(favourites));
+    localStorage.setItem("stark-watchlist",JSON.stringify(watchlist));
+  }catch(e){}
+}
+
 function showTab(tab){
- document.querySelectorAll("main > section").forEach(s=>s.classList.toggle("hidden",s.id!==tab));
- document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
- render();window.scrollTo({top:0,behavior:"smooth"});
+  document.querySelectorAll("main > section").forEach(s=>
+    s.classList.toggle("hidden",s.id!==tab)
+  );
+  document.querySelectorAll("[data-tab]").forEach(b=>
+    b.classList.toggle("active",b.dataset.tab===tab)
+  );
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
 }
+
+/* Load comic-style character portraits from a public image dataset */
+async function loadCharacterImages(){
+  try{
+    const response=await fetch(
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json"
+    );
+    if(!response.ok) throw new Error("Image library unavailable");
+
+    const heroes=await response.json();
+
+    characters.forEach(c=>{
+      const names=[
+        c.name,
+        c.alias,
+        ...(imageAliases[c.id]||[])
+      ].map(normalizeName);
+
+      let match=heroes.find(h=>
+        h.biography?.publisher==="Marvel Comics" &&
+        names.includes(normalizeName(h.name))
+      );
+
+      /* Prefer an exact name match before trying aliases */
+      if(!match){
+        const aliasNames=(imageAliases[c.id]||[]).map(normalizeName);
+        match=heroes.find(h=>
+          h.biography?.publisher==="Marvel Comics" &&
+          aliasNames.includes(normalizeName(h.name))
+        );
+      }
+
+      if(match?.images?.lg){
+        imageByName[c.id]=match.images.lg;
+      }
+    });
+  }catch(error){
+    console.warn("Character images could not be loaded:",error);
+  }
+
+  render();
+}
+
 function characterCard(c){
- return `<article class="card"><div class="avatar" aria-hidden="true">${c.icon}</div><span class="tag">${c.team.toUpperCase()}</span><h3>${c.name}</h3><p class="muted">${c.alias}</p><p>${c.power}</p><button onclick="toggleFavourite('${c.id}')">${favourites.includes(c.id)?"★ Saved":"☆ Add favourite"}</button></article>`;
+  const image=imageByName[c.id];
+
+  return `<article class="card">
+    <div class="avatar">
+      <span class="fallback" aria-hidden="true">${c.icon}</span>
+      ${image?`<img src="${image}" alt="${c.name} comic-style portrait"
+        loading="lazy"
+        onerror="this.remove()">`:""}
+    </div>
+    <span class="tag">${c.team.toUpperCase()}</span>
+    <h3>${c.name}</h3>
+    <p class="muted">${c.alias}</p>
+    <p>${c.power}</p>
+    <button onclick="toggleFavourite('${c.id}')">
+      ${favourites.includes(c.id)?"★ Saved":"☆ Add favourite"}
+    </button>
+  </article>`;
 }
+
 function toggleFavourite(id){
- favourites=favourites.includes(id)?favourites.filter(x=>x!==id):[...favourites,id];
- save();render();
+  favourites=favourites.includes(id)
+    ?favourites.filter(x=>x!==id)
+    :[...favourites,id];
+  save();
+  render();
 }
+
 function toggleMovie(title){
- watchlist=watchlist.includes(title)?watchlist.filter(x=>x!==title):[...watchlist,title];
- save();render();
+  watchlist=watchlist.includes(title)
+    ?watchlist.filter(x=>x!==title)
+    :[...watchlist,title];
+  save();
+  render();
 }
-function resetFilters(){activeTeam="All";document.getElementById("search").value="";render()}
+
+function resetFilters(){
+  activeTeam="All";
+  document.getElementById("search").value="";
+  render();
+}
+
 function render(){
- const query=(document.getElementById("search").value||"").toLowerCase();
- const teams=["All",...new Set(characters.map(c=>c.team))];
- document.getElementById("filters").innerHTML=teams.map(t=>`<button class="${activeTeam===t?"active":""}" onclick="activeTeam=${JSON.stringify(t)};render()">${t}</button>`).join("");
- const filtered=characters.filter(c=>(activeTeam==="All"||c.team===activeTeam)&&[c.name,c.alias,c.power,c.team].join(" ").toLowerCase().includes(query));
- document.getElementById("resultCount").textContent=`${filtered.length} character ${filtered.length===1?"file":"files"}`;
- document.getElementById("characterGrid").innerHTML=filtered.length?filtered.map(characterCard).join(""):'<div class="empty">No matching files found. Try another search or reset filters.</div>';
- document.getElementById("featured").innerHTML=characters.filter(c=>c.featured).slice(0,6).map(characterCard).join("");
- document.getElementById("heroCount").textContent=characters.length;
- document.getElementById("savedCount").textContent=favourites.length;
- document.getElementById("watchCount").textContent=watchlist.length;
- document.getElementById("favourites").innerHTML=characters.filter(c=>favourites.includes(c.id)).map(characterCard).join("")||'<div class="empty">No favourites yet. Save a character!</div>';
- document.getElementById("timelineList").innerHTML=movies.map(m=>`<article class="timeline-item"><span class="tag">${m.year}</span><strong>${m.title}</strong><p class="muted">MCU release selection</p><button onclick="toggleMovie(${JSON.stringify(m.title)})">${watchlist.includes(m.title)?"✓ In watchlist":"＋ Add to watchlist"}</button></article>`).join("");
- document.getElementById("watchlist").innerHTML=watchlist.map(t=>`<article class="timeline-item"><strong>${t}</strong><button onclick="toggleMovie(${JSON.stringify(t)})">Remove</button></article>`).join("")||'<div class="empty">Your watchlist is empty.</div>';
+  const searchInput=document.getElementById("search");
+  const query=(searchInput?searchInput.value:"").toLowerCase();
+  const teams=["All",...new Set(characters.map(c=>c.team))];
+
+  document.getElementById("filters").innerHTML=teams.map(t=>
+    `<button class="${activeTeam===t?"active":""}"
+      onclick="activeTeam=${JSON.stringify(t)};render()">${t}</button>`
+  ).join("");
+
+  const filtered=characters.filter(c=>
+    (activeTeam==="All"||c.team===activeTeam)&&
+    [c.name,c.alias,c.power,c.team].join(" ").toLowerCase().includes(query)
+  );
+
+  document.getElementById("resultCount").textContent=
+    `${filtered.length} character ${filtered.length===1?"file":"files"}`;
+
+  document.getElementById("characterGrid").innerHTML=
+    filtered.length
+      ?filtered.map(characterCard).join("")
+      :'<div class="empty">No matching files found. Try another search or reset filters.</div>';
+
+  document.getElementById("featured").innerHTML=
+    characters.filter(c=>c.featured).slice(0,6).map(characterCard).join("");
+
+  document.getElementById("heroCount").textContent=characters.length;
+  document.getElementById("savedCount").textContent=favourites.length;
+  document.getElementById("watchCount").textContent=watchlist.length;
+
+  document.getElementById("favourites").innerHTML=
+    characters.filter(c=>favourites.includes(c.id)).map(characterCard).join("")||
+    '<div class="empty">No favourites yet. Save a character!</div>';
+
+  document.getElementById("timelineList").innerHTML=movies.map(m=>
+    `<article class="timeline-item">
+      <span class="tag">${m.year}</span>
+      <strong>${m.title}</strong>
+      <p class="muted">MCU release selection</p>
+      <button onclick="toggleMovie(${JSON.stringify(m.title)})">
+        ${watchlist.includes(m.title)?"✓ In watchlist":"＋ Add to watchlist"}
+      </button>
+    </article>`
+  ).join("");
+
+  document.getElementById("watchlist").innerHTML=
+    watchlist.map(t=>
+      `<article class="timeline-item">
+        <strong>${t}</strong>
+        <button onclick="toggleMovie(${JSON.stringify(t)})">Remove</button>
+      </article>`
+    ).join("")||
+    '<div class="empty">Your watchlist is empty.</div>';
 }
+
 document.getElementById("search").addEventListener("input",render);
+
+/* Render the app immediately, then load portraits in the background */
 render();
+loadCharacterImages();
 </script>
 </body>
-                                          </html>
-                                          
+                   </html>
+ 
