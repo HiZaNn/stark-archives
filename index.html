@@ -5,379 +5,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090817">
-<title>Stark Archives | Multiverse Database</title>
+<title>Stark Archives — Multiverse Intelligence</title>
 <style>
-:root {
-  --bg: #090817;
-  --panel: #151329;
-  --purple: #a78bfa;
-  --cyan: #67e8f9;
-  --text: #f5f3ff;
-  --muted: #aaa6c4;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse at 80% 0%, #38205f 0%, transparent 38%),
-    radial-gradient(ellipse at 0% 55%, #15284b 0%, transparent 40%),
-    var(--bg);
-  color: var(--text);
-  font-family: system-ui, sans-serif;
-  min-height: 100vh;
-}
-header {
-  padding: 25px 20px 18px;
-  border-bottom: 1px solid #ffffff16;
-  background: #09081799;
-}
-.brand {
-  color: var(--purple);
-  font-size: 12px;
-  letter-spacing: 3px;
-  font-weight: 800;
-}
-h1 { font-size: 27px; margin: 8px 0; }
-p { line-height: 1.6; }
-.muted { color: var(--muted); }
-main { max-width: 850px; margin: auto; padding: 20px; }
-.hero {
-  border: 1px solid #a78bfa50;
-  border-radius: 22px;
-  padding: 24px;
-  background: linear-gradient(135deg,#29204b,#111629cc);
-  margin-bottom: 24px;
-}
-.eyebrow {
-  color: var(--cyan);
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 800;
-}
-.hero h2 { font-size: 28px; margin: 10px 0; }
-button, input { font: inherit; }
-button {
-  color: var(--text);
-  background: #211d3b;
-  border: 1px solid #ffffff20;
-  border-radius: 12px;
-  padding: 11px 14px;
-  cursor: pointer;
-}
-button:focus-visible, input:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
-}
-.primary {
-  background: linear-gradient(110deg,#8b5cf6,#5269dd);
-  border: 0;
-  font-weight: 700;
-}
-.tabs {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  margin-bottom: 22px;
-}
-.tabs button { flex-shrink: 0; }
-.tabs button.active {
-  border-color: var(--purple);
-  background: #35255c;
-}
-input {
-  width: 100%;
-  background: #151329;
-  border: 1px solid #ffffff20;
-  border-radius: 12px;
-  color: white;
-  padding: 14px;
-  margin-bottom: 15px;
-}
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-h3 { font-size: 19px; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
-}
-.card {
-  min-width: 0;
-  background: #151329d9;
-  border: 1px solid #ffffff15;
-  border-radius: 17px;
-  padding: 15px;
-}
-.avatar {
-  height: 92px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  font-size: 40px;
-  background: radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);
-  margin-bottom: 12px;
-}
-.card h3 { margin: 5px 0; }
-.card p { font-size: 13px; margin: 7px 0 14px; }
-.tag {
-  display: inline-block;
-  color: var(--cyan);
-  font-size: 10px;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-.card button { width: 100%; margin-top: 7px; }
-.timeline-item {
-  padding: 14px;
-  border-left: 2px solid var(--purple);
-  margin: 12px 0;
-  background: #151329b8;
-  border-radius: 0 12px 12px 0;
-}
-.timeline-item p { margin: 5px 0; font-size: 13px; }
-footer {
-  text-align: center;
-  padding: 30px 18px;
-  color: var(--muted);
-  font-size: 12px;
-}
-.hidden { display: none !important; }
-@media(min-width:600px) {
-  .grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
-  .hero { padding: 32px; }
-}
+:root{--bg:#090817;--panel:#151329;--purple:#a78bfa;--cyan:#67e8f9;--text:#f5f3ff;--muted:#aaa6c4;--line:#ffffff1c}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,#38205f 0%,transparent 38%),radial-gradient(ellipse at 0% 55%,#15284b 0%,transparent 40%),var(--bg);color:var(--text);font-family:system-ui,sans-serif;min-height:100vh}
+header{padding:22px 18px 18px;border-bottom:1px solid var(--line);background:#090817a8}
+.brand{color:var(--purple);font-size:11px;letter-spacing:2.4px;font-weight:850}
+h1{font-size:27px;margin:8px 0 3px}
+.muted{color:var(--muted)}
+main{max-width:900px;margin:auto;padding:18px}
+.hero{border:1px solid #a78bfa58;border-radius:23px;padding:23px;background:linear-gradient(135deg,#29204be8,#111629e8);margin-bottom:20px}
+.eyebrow,.tag{color:var(--cyan);font-size:10px;letter-spacing:1.8px;font-weight:800}
+.hero h2{font-size:clamp(27px,7vw,38px);line-height:1.12;margin:12px 0}
+p{line-height:1.55}
+button,input{font:inherit}
+button{color:var(--text);background:#211d3b;border:1px solid #ffffff22;border-radius:12px;padding:10px 13px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.primary{background:linear-gradient(110deg,#8b5cf6,#5269dd);border:0;font-weight:750}
+.tabs,.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin-bottom:14px}
+.tabs button,.filters button{flex-shrink:0}
+.tabs button.active,.filters button.active{border-color:var(--purple);background:#35255c}
+.hidden{display:none!important}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h3{font-size:18px;margin:16px 0 12px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat,.card,.timeline-item{min-width:0;background:#151329d9;border:1px solid var(--line);border-radius:16px;padding:13px}
+.stat strong{display:block;font-size:24px;margin-top:8px}
+.stat span{font-size:10px;color:var(--cyan);letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.card{padding:12px}
+.avatar{height:76px;border-radius:12px;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);margin-bottom:11px}
+.card h3{font-size:16px;margin:5px 0}
+.card p{font-size:12px;margin:7px 0 11px;overflow-wrap:anywhere}
+.card .tag{font-size:9px;letter-spacing:1px}
+.card button{width:100%;font-size:12px;margin-top:6px;padding:9px 7px}
+input{width:100%;background:#151329;color:var(--text);border:1px solid #ffffff28;border-radius:12px;padding:13px;margin:0 0 12px}
+.filters button{font-size:12px}
+.timeline-item{border-left:2px solid var(--purple);border-radius:0 12px 12px 0;margin:11px 0}
+.timeline-item strong{display:block;margin:5px 0}
+.timeline-item p{font-size:12px;margin:5px 0 10px}
+.empty{color:var(--muted);background:#15132988;border:1px dashed #ffffff2a;padding:18px;border-radius:14px;font-size:13px}
+footer{text-align:center;padding:26px 18px 36px;color:var(--muted);font-size:11px;line-height:1.6}
+@media(min-width:600px){main{padding:24px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:32px}.avatar{height:100px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand">✦ STARK INDUSTRIES // FAN PROJECT</div>
-  <h1>Stark Archives</h1>
-  <div class="muted">Multiverse Intelligence Database</div>
+<div class="brand">✦ STARK INDUSTRIES // FAN PROJECT</div>
+<h1>Stark Archives</h1>
+<div class="muted">Multiverse Intelligence Database</div>
 </header>
-
 <main>
-  <section class="hero">
-    <div class="eyebrow">EARTH-616 // DATABASE ONLINE</div>
-    <h2>Explore the Multiverse.</h2>
-    <p class="muted">Heroes. Villains. Timelines.
-      Your personal archive of the Marvel Cinematic Universe.</p>
-    <button class="primary" onclick="showTab('characters')">
-      Access character files →
-    </button>
-  </section>
-
-  <nav class="tabs" aria-label="Main navigation">
-    <button class="active" data-tab="home"
-      onclick="showTab('home')">⌂ Home</button>
-    <button data-tab="characters"
-      onclick="showTab('characters')">◉ Characters</button>
-    <button data-tab="timeline"
-      onclick="showTab('timeline')">◷ Timeline</button>
-    <button data-tab="collection"
-      onclick="showTab('collection')">☆ My collection</button>
-  </nav>
-
-  <section id="home">
-    <div class="section-head">
-      <h3>Mission control</h3>
-      <span class="tag">YOUR ARCHIVE</span>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="tag">DATABASE</div>
-        <h3 id="heroCount">6</h3>
-        <p class="muted">Character files</p>
-      </div>
-      <div class="card">
-        <div class="tag">SAVED</div>
-        <h3 id="savedCount">0</h3>
-        <p class="muted">Favourites</p>
-      </div>
-      <div class="card">
-        <div class="tag">WATCHLIST</div>
-        <h3 id="watchCount">0</h3>
-        <p class="muted">Titles saved</p>
-      </div>
-    </div>
-    <h3>Featured intelligence</h3>
-    <div id="featured" class="grid"></div>
-  </section>
-
-  <section id="characters" class="hidden">
-    <h3>Character dossiers</h3>
-    <p class="muted">Search the known universe.</p>
-    <input id="search" type="search"
-      placeholder="Search heroes, villains, powers..."
-      aria-label="Search characters">
-    <div id="characterGrid" class="grid"></div>
-  </section>
-
-  <section id="timeline" class="hidden">
-    <h3>MCU timeline</h3>
-    <p class="muted">A starter collection of films.
-      Ordered by release year, not story chronology.</p>
-    <div id="timelineList"></div>
-  </section>
-
-  <section id="collection" class="hidden">
-    <h3>My collection</h3>
-    <p class="muted">Your favourites and watchlist stay
-      saved in this browser on this device.</p>
-    <h3>★ Favourite characters</h3>
-    <div id="favourites" class="grid"></div>
-    <h3>◷ Watchlist</h3>
-    <div id="watchlist"></div>
-  </section>
+<section class="hero">
+<div class="eyebrow">EARTH-616 // DATABASE ONLINE</div>
+<h2>Explore the<br>Multiverse.</h2>
+<p class="muted">Heroes. Villains. Timelines. Your personal archive of the Marvel universe.</p>
+<button class="primary" onclick="showTab('characters')">Access character files →</button>
+</section>
+<nav class="tabs" aria-label="Main navigation">
+<button class="active" data-tab="home" onclick="showTab('home')">⌂ Home</button>
+<button data-tab="characters" onclick="showTab('characters')">◉ Characters</button>
+<button data-tab="timeline" onclick="showTab('timeline')">◷ Timeline</button>
+<button data-tab="collection" onclick="showTab('collection')">☆ My collection</button>
+</nav>
+<section id="home">
+<div class="section-head"><h3>Mission control</h3><span class="tag">YOUR ARCHIVE</span></div>
+<div class="stats">
+<div class="stat"><span>CHARACTERS</span><strong id="heroCount">52</strong></div>
+<div class="stat"><span>FAVOURITES</span><strong id="savedCount">0</strong></div>
+<div class="stat"><span>WATCHLIST</span><strong id="watchCount">0</strong></div>
+</div>
+<h3>Featured intelligence</h3><div id="featured" class="grid"></div>
+</section>
+<section id="characters" class="hidden">
+<h3>Character dossiers</h3>
+<p class="muted">Search heroes, villains, powers, aliases or teams.</p>
+<input id="search" type="search" placeholder="e.g. Spider-Man, magic, Avengers…" aria-label="Search characters">
+<div id="filters" class="filters"></div>
+<div class="section-head"><span class="muted" id="resultCount">52 files</span><button onclick="resetFilters()">Reset filters</button></div>
+<div id="characterGrid" class="grid"></div>
+</section>
+<section id="timeline" class="hidden">
+<h3>MCU timeline</h3>
+<p class="muted">Starter selection ordered by release year, not in-universe chronology.</p>
+<div id="timelineList"></div>
+</section>
+<section id="collection" class="hidden">
+<h3>My collection</h3>
+<p class="muted">Saved on this device and browser.</p>
+<h3>★ Favourite characters</h3><div id="favourites" class="grid"></div>
+<h3>◷ Watchlist</h3><div id="watchlist"></div>
+</section>
 </main>
-
-<footer>
-  An unofficial fan-made project. Not affiliated with Marvel
-  or Disney. Character names and related properties belong
-  to their respective owners.
-</footer>
-
+<footer>Unofficial fan-made project, not affiliated with Marvel or Disney. Character names and related properties belong to their respective owners.<br>Stark Archives v2.0 · Built by a fan, for fans.</footer>
 <script>
 const characters = [
-  {id:"ironman",name:"Iron Man",alias:"Tony Stark",
-   power:"Genius inventor · Powered armor",
-   team:"Avengers",icon:"⚙️",featured:true},
-  {id:"strange",name:"Doctor Strange",alias:"Stephen Strange",
-   power:"Mystic arts · Dimensional travel",
-   team:"Mystic Arts",icon:"🔮",featured:true},
-  {id:"spiderman",name:"Spider-Man",alias:"Peter Parker",
-   power:"Spider-sense · Wall crawling",
-   team:"Friendly Neighborhood",icon:"🕸️"},
-  {id:"wanda",name:"Scarlet Witch",alias:"Wanda Maximoff",
-   power:"Chaos magic · Reality manipulation",
-   team:"Avengers",icon:"🔴",featured:true},
-  {id:"thor",name:"Thor",alias:"Thor Odinson",
-   power:"Thunder · Asgardian strength",
-   team:"Avengers",icon:"⚡"},
-  {id:"loki",name:"Loki",alias:"God of Mischief",
-   power:"Illusions · Sorcery",
-   team:"Asgard",icon:"🐍"}
+{id:"ironman",name:"Iron Man",alias:"Tony Stark",power:"Genius inventor · Powered armor",team:"Avengers",icon:"⚙️",featured:true},
+{id:"captainamerica",name:"Captain America",alias:"Steve Rogers",power:"Super-soldier strength · Vibranium shield",team:"Avengers",icon:"🛡️",featured:true},
+{id:"thor",name:"Thor",alias:"Thor Odinson",power:"Thunder · Asgardian strength",team:"Avengers",icon:"⚡",featured:true},
+{id:"hulk",name:"Hulk",alias:"Bruce Banner",power:"Super strength · Regeneration",team:"Avengers",icon:"💚"},
+{id:"blackwidow",name:"Black Widow",alias:"Natasha Romanoff",power:"Espionage · Elite combat",team:"Avengers",icon:"🕷️"},
+{id:"hawkeye",name:"Hawkeye",alias:"Clint Barton",power:"Master archer · Tactical expertise",team:"Avengers",icon:"🏹"},
+{id:"falcon",name:"Falcon",alias:"Sam Wilson",power:"Flight · Tactical combat",team:"Avengers",icon:"🦅"},
+{id:"warmachine",name:"War Machine",alias:"James Rhodes",power:"Powered armor · Heavy weapons",team:"Avengers",icon:"🤖"},
+{id:"vision",name:"Vision",alias:"Vision",power:"Density control · Energy projection",team:"Avengers",icon:"💎"},
+{id:"antman",name:"Ant-Man",alias:"Scott Lang",power:"Size manipulation · Pym technology",team:"Avengers",icon:"🐜"},
+{id:"wasp",name:"The Wasp",alias:"Hope van Dyne",power:"Size manipulation · Flight",team:"Avengers",icon:"🐝"},
+{id:"captainmarvel",name:"Captain Marvel",alias:"Carol Danvers",power:"Cosmic energy · Flight",team:"Avengers",icon:"🌟"},
+{id:"strange",name:"Doctor Strange",alias:"Stephen Strange",power:"Mystic arts · Dimensional travel",team:"Mystic Arts",icon:"🔮",featured:true},
+{id:"wanda",name:"Scarlet Witch",alias:"Wanda Maximoff",power:"Chaos magic · Reality manipulation",team:"Mystic Arts",icon:"🔴",featured:true},
+{id:"wong",name:"Wong",alias:"Wong",power:"Sorcery · Portal creation",team:"Mystic Arts",icon:"✨"},
+{id:"america",name:"America Chavez",alias:"America Chavez",power:"Star portals · Multiverse travel",team:"Multiverse",icon:"⭐"},
+{id:"moonknight",name:"Moon Knight",alias:"Marc Spector",power:"Combat skills · Khonshu's powers",team:"Street Level",icon:"🌙"},
+{id:"spiderman",name:"Spider-Man",alias:"Peter Parker",power:"Spider-sense · Wall crawling",team:"Spider-Verse",icon:"🕸️",featured:true},
+{id:"miles",name:"Miles Morales",alias:"Miles Morales",power:"Venom blast · Camouflage",team:"Spider-Verse",icon:"🕷️"},
+{id:"daredevil",name:"Daredevil",alias:"Matt Murdock",power:"Enhanced senses · Martial arts",team:"Street Level",icon:"👊"},
+{id:"punisher",name:"The Punisher",alias:"Frank Castle",power:"Military tactics · Weapons expertise",team:"Street Level",icon:"💀"},
+{id:"luke",name:"Luke Cage",alias:"Luke Cage",power:"Super strength · Bulletproof skin",team:"Street Level",icon:"💪"},
+{id:"jessica",name:"Jessica Jones",alias:"Jessica Jones",power:"Super strength · Investigation",team:"Street Level",icon:"🔎"},
+{id:"shangchi",name:"Shang-Chi",alias:"Shang-Chi",power:"Martial arts · Ten Rings",team:"Heroes",icon:"🥋"},
+{id:"blackpanther",name:"Black Panther",alias:"T'Challa",power:"Enhanced abilities · Vibranium suit",team:"Wakanda",icon:"🐈‍⬛"},
+{id:"shuri",name:"Shuri",alias:"Shuri",power:"Scientific genius · Wakandan technology",team:"Wakanda",icon:"🔬"},
+{id:"starlord",name:"Star-Lord",alias:"Peter Quill",power:"Blasters · Spaceflight expertise",team:"Guardians",icon:"🚀",featured:true},
+{id:"gamora",name:"Gamora",alias:"Gamora",power:"Elite combat · Swordsmanship",team:"Guardians",icon:"⚔️"},
+{id:"rocket",name:"Rocket Raccoon",alias:"Rocket",power:"Engineering · Weapons expertise",team:"Guardians",icon:"🦝"},
+{id:"groot",name:"Groot",alias:"Groot",power:"Plant manipulation · Regeneration",team:"Guardians",icon:"🌳"},
+{id:"drax",name:"Drax",alias:"Drax the Destroyer",power:"Combat prowess · Enhanced strength",team:"Guardians",icon:"💥"},
+{id:"nebula",name:"Nebula",alias:"Nebula",power:"Cybernetic upgrades · Combat",team:"Guardians",icon:"🔧"},
+{id:"betaraybill",name:"Beta Ray Bill",alias:"Beta Ray Bill",power:"Super strength · Stormbreaker",team:"Cosmic",icon:"⚡"},
+{id:"loki",name:"Loki",alias:"God of Mischief",power:"Illusions · Sorcery",team:"Asgard",icon:"🐍",featured:true},
+{id:"hela",name:"Hela",alias:"Goddess of Death",power:"Necroswords · Asgardian power",team:"Asgard",icon:"💀"},
+{id:"valkyrie",name:"Valkyrie",alias:"Brunnhilde",power:"Elite warrior · Pegasus rider",team:"Asgard",icon:"🐎"},
+{id:"eternity",name:"Eternity",alias:"Cosmic Entity",power:"Cosmic omnipresence",team:"Cosmic Entities",icon:"🌌"},
+{id:"reed",name:"Mister Fantastic",alias:"Reed Richards",power:"Elasticity · Scientific genius",team:"Fantastic Four",icon:"🧪"},
+{id:"sue",name:"Invisible Woman",alias:"Sue Storm",power:"Invisibility · Force fields",team:"Fantastic Four",icon:"🫥"},
+{id:"johnny",name:"Human Torch",alias:"Johnny Storm",power:"Flame generation · Flight",team:"Fantastic Four",icon:"🔥"},
+{id:"ben",name:"The Thing",alias:"Ben Grimm",power:"Rock-like body · Super strength",team:"Fantastic Four",icon:"🪨"},
+{id:"wolverine",name:"Wolverine",alias:"Logan",power:"Healing factor · Adamantium claws",team:"X-Men",icon:"🐺"},
+{id:"storm",name:"Storm",alias:"Ororo Munroe",power:"Weather manipulation",team:"X-Men",icon:"🌩️"},
+{id:"magneto",name:"Magneto",alias:"Erik Lehnsherr",power:"Magnetism · Magnetic fields",team:"X-Men",icon:"🧲"},
+{id:"cyclops",name:"Cyclops",alias:"Scott Summers",power:"Optic energy blasts",team:"X-Men",icon:"🔴"},
+{id:"thanos",name:"Thanos",alias:"The Mad Titan",power:"Titanic strength · Infinity Stones",team:"Villains",icon:"🟣",featured:true},
+{id:"ultron",name:"Ultron",alias:"Ultron",power:"Artificial intelligence · Robotics",team:"Villains",icon:"🤖"},
+{id:"doom",name:"Doctor Doom",alias:"Victor von Doom",power:"Sorcery · Advanced technology",team:"Villains",icon:"👑"},
+{id:"greengoblin",name:"Green Goblin",alias:"Norman Osborn",power:"Goblin serum · Glider technology",team:"Villains",icon:"🎃"},
+{id:"kang",name:"Kang",alias:"The Conqueror",power:"Time technology · Advanced armor",team:"Villains",icon:"⌛"},
+{id:"redskull",name:"Red Skull",alias:"Johann Schmidt",power:"Strategic genius · Leadership",team:"Villains",icon:"☠️"},
+{id:"kingpin",name:"Kingpin",alias:"Wilson Fisk",power:"Criminal empire · Physical strength",team:"Villains",icon:"♟️"}
 ];
-
-const movies = [
-  {year:2008,title:"Iron Man"},
-  {year:2012,title:"The Avengers"},
-  {year:2016,title:"Doctor Strange"},
-  {year:2018,title:"Avengers: Infinity War"},
-  {year:2019,title:"Avengers: Endgame"},
-  {year:2022,title:"Doctor Strange in the Multiverse of Madness"}
+const movies=[
+{year:2008,title:"Iron Man"},
+{year:2012,title:"The Avengers"},
+{year:2014,title:"Guardians of the Galaxy"},
+{year:2016,title:"Doctor Strange"},
+{year:2018,title:"Avengers: Infinity War"},
+{year:2019,title:"Avengers: Endgame"},
+{year:2021,title:"Spider-Man: No Way Home"},
+{year:2022,title:"Doctor Strange in the Multiverse of Madness"},
+{year:2022,title:"Black Panther: Wakanda Forever"}
 ];
-
-const load = (key) => {
-  try { return JSON.parse(localStorage.getItem(key)) || []; }
-  catch { return []; }
-};
-let favourites = load("stark-favourites");
-let watchlist = load("stark-watchlist");
-
-function save() {
-  localStorage.setItem("stark-favourites",
-    JSON.stringify(favourites));
-  localStorage.setItem("stark-watchlist",
-    JSON.stringify(watchlist));
+function load(key){try{return JSON.parse(localStorage.getItem(key))||[]}catch(e){return[]}}
+let favourites=load("stark-favourites");
+let watchlist=load("stark-watchlist");
+let activeTeam="All";
+function save(){try{localStorage.setItem("stark-favourites",JSON.stringify(favourites));localStorage.setItem("stark-watchlist",JSON.stringify(watchlist))}catch(e){}}
+function showTab(tab){
+ document.querySelectorAll("main > section").forEach(s=>s.classList.toggle("hidden",s.id!==tab));
+ document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ render();window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function showTab(tab) {
-  document.querySelectorAll("main > section").forEach(section => {
-    section.classList.toggle("hidden",section.id !== tab);
-  });
-  document.querySelectorAll("[data-tab]").forEach(button => {
-    button.classList.toggle("active",button.dataset.tab === tab);
-  });
-  render();
-  window.scrollTo({top:0,behavior:"smooth"});
+function characterCard(c){
+ return `<article class="card"><div class="avatar" aria-hidden="true">${c.icon}</div><span class="tag">${c.team.toUpperCase()}</span><h3>${c.name}</h3><p class="muted">${c.alias}</p><p>${c.power}</p><button onclick="toggleFavourite('${c.id}')">${favourites.includes(c.id)?"★ Saved":"☆ Add favourite"}</button></article>`;
 }
-
-function characterCard(c) {
-  const saved = favourites.includes(c.id);
-  return `<article class="card">
-    <div class="avatar" aria-hidden="true">${c.icon}</div>
-    <span class="tag">${c.team.toUpperCase()}</span>
-    <h3>${c.name}</h3>
-    <p class="muted">${c.alias}</p>
-    <p>${c.power}</p>
-    <button onclick="toggleFavourite('${c.id}')">
-      ${saved ? "★ Saved" : "☆ Add favourite"}
-    </button>
-  </article>`;
+function toggleFavourite(id){
+ favourites=favourites.includes(id)?favourites.filter(x=>x!==id):[...favourites,id];
+ save();render();
 }
-
-function toggleFavourite(id) {
-  favourites = favourites.includes(id)
-    ? favourites.filter(item => item !== id)
-    : [...favourites,id];
-  save();
-  render();
+function toggleMovie(title){
+ watchlist=watchlist.includes(title)?watchlist.filter(x=>x!==title):[...watchlist,title];
+ save();render();
 }
-
-function toggleMovie(title) {
-  watchlist = watchlist.includes(title)
-    ? watchlist.filter(item => item !== title)
-    : [...watchlist,title];
-  save();
-  render();
+function resetFilters(){activeTeam="All";document.getElementById("search").value="";render()}
+function render(){
+ const query=(document.getElementById("search").value||"").toLowerCase();
+ const teams=["All",...new Set(characters.map(c=>c.team))];
+ document.getElementById("filters").innerHTML=teams.map(t=>`<button class="${activeTeam===t?"active":""}" onclick="activeTeam=${JSON.stringify(t)};render()">${t}</button>`).join("");
+ const filtered=characters.filter(c=>(activeTeam==="All"||c.team===activeTeam)&&[c.name,c.alias,c.power,c.team].join(" ").toLowerCase().includes(query));
+ document.getElementById("resultCount").textContent=`${filtered.length} character ${filtered.length===1?"file":"files"}`;
+ document.getElementById("characterGrid").innerHTML=filtered.length?filtered.map(characterCard).join(""):'<div class="empty">No matching files found. Try another search or reset filters.</div>';
+ document.getElementById("featured").innerHTML=characters.filter(c=>c.featured).slice(0,6).map(characterCard).join("");
+ document.getElementById("heroCount").textContent=characters.length;
+ document.getElementById("savedCount").textContent=favourites.length;
+ document.getElementById("watchCount").textContent=watchlist.length;
+ document.getElementById("favourites").innerHTML=characters.filter(c=>favourites.includes(c.id)).map(characterCard).join("")||'<div class="empty">No favourites yet. Save a character!</div>';
+ document.getElementById("timelineList").innerHTML=movies.map(m=>`<article class="timeline-item"><span class="tag">${m.year}</span><strong>${m.title}</strong><p class="muted">MCU release selection</p><button onclick="toggleMovie(${JSON.stringify(m.title)})">${watchlist.includes(m.title)?"✓ In watchlist":"＋ Add to watchlist"}</button></article>`).join("");
+ document.getElementById("watchlist").innerHTML=watchlist.map(t=>`<article class="timeline-item"><strong>${t}</strong><button onclick="toggleMovie(${JSON.stringify(t)})">Remove</button></article>`).join("")||'<div class="empty">Your watchlist is empty.</div>';
 }
-
-function render() {
-  const query = (document.getElementById("search")?.value || "")
-    .toLowerCase();
-
-  const filtered = characters.filter(c =>
-    [c.name,c.alias,c.power,c.team].join(" ")
-      .toLowerCase().includes(query));
-
-  document.getElementById("characterGrid").innerHTML =
-    filtered.length ? filtered.map(characterCard).join("")
-    : "<p>No matching files found.</p>";
-
-  document.getElementById("featured").innerHTML =
-    characters.filter(c => c.featured)
-      .map(characterCard).join("");
-
-  document.getElementById("heroCount").textContent =
-    characters.length;
-  document.getElementById("savedCount").textContent =
-    favourites.length;
-  document.getElementById("watchCount").textContent =
-    watchlist.length;
-
-  document.getElementById("favourites").innerHTML =
-    characters.filter(c => favourites.includes(c.id))
-      .map(characterCard).join("") ||
-    '<p class="muted">No favourites yet. Save a character!</p>';
-
-  document.getElementById("timelineList").innerHTML =
-    movies.map(m => `<article class="timeline-item">
-      <span class="tag">${m.year}</span>
-      <strong>${m.title}</strong>
-      <p class="muted">MCU film · Release order</p>
-      <button onclick="toggleMovie('${m.title.replace(/'/g,"&#39;")}')">
-        ${watchlist.includes(m.title)
-          ? "✓ In watchlist" : "+ Add to watchlist"}
-      </button>
-    </article>`).join("");
-
-  document.getElementById("watchlist").innerHTML =
-    watchlist.map(title => `<article class="timeline-item">
-      <strong>${title}</strong><br>
-      <button onclick="toggleMovie('${title.replace(/'/g,"&#39;")}')">
-        Remove
-      </button>
-    </article>`).join("") ||
-    '<p class="muted">Your watchlist is empty.</p>';
-}
-
 document.getElementById("search").addEventListener("input",render);
 render();
 </script>
 </body>
-  </html>
-      
+                                          </html>
+                                          
