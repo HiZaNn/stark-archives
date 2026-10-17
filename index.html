@@ -10,67 +10,67 @@
 :root{--bg:#090817;--panel:#151329;--purple:#a78bfa;--cyan:#67e8f9;--text:#f5f3ff;--muted:#aaa6c4;--line:#ffffff1c}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 80% 0%,#38205f 0%,transparent 38%),radial-gradient(ellipse at 0% 55%,#15284b 0%,transparent 40%),var(--bg);color:var(--text);font-family:system-ui,sans-serif;min-height:100vh}
-header{padding:22px 18px 18px;border-bottom:1px solid var(--line);background:#090817a8}
+header{padding:22px 18px 18px;border-bottom:1px solid var(--line);background:#090817d9;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
 .brand{color:var(--purple);font-size:11px;letter-spacing:2.4px;font-weight:850}
-h1{font-size:27px;margin:8px 0 3px}
-.muted{color:var(--muted)}
-main{max-width:900px;margin:auto;padding:18px}
+h1{font-size:27px;margin:8px 0 3px}.muted{color:var(--muted)}
+main{max-width:1000px;margin:auto;padding:18px}
 .hero{border:1px solid #a78bfa58;border-radius:23px;padding:23px;background:linear-gradient(135deg,#29204be8,#111629e8);margin-bottom:20px}
 .eyebrow,.tag{color:var(--cyan);font-size:10px;letter-spacing:1.8px;font-weight:800}
 .hero h2{font-size:clamp(27px,7vw,38px);line-height:1.12;margin:12px 0}
-p{line-height:1.55}
-button,input{font:inherit}
+p{line-height:1.55}button,input,select{font:inherit}
 button{color:var(--text);background:#211d3b;border:1px solid #ffffff22;border-radius:12px;padding:10px 13px;cursor:pointer}
-button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
 .primary{background:linear-gradient(110deg,#8b5cf6,#5269dd);border:0;font-weight:750}
-.tabs,.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin-bottom:14px}
-.tabs button,.filters button{flex-shrink:0}
-.tabs button.active,.filters button.active{border-color:var(--purple);background:#35255c}
-.hidden{display:none!important}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tabs,.filters,.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin-bottom:14px}
+.tabs button,.filters button,.chips button{flex-shrink:0}
+.tabs button.active,.filters button.active,.chips button.active{border-color:var(--purple);background:#35255c}
+.hidden{display:none!important}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 h3{font-size:18px;margin:16px 0 12px}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.stat,.card,.timeline-item{min-width:0;background:#151329d9;border:1px solid var(--line);border-radius:16px;padding:13px}
-.stat strong{display:block;font-size:24px;margin-top:8px}
-.stat span{font-size:10px;color:var(--cyan);letter-spacing:1px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.card{padding:12px;overflow:hidden}
-.avatar{height:190px;position:relative;overflow:hidden;border-radius:12px;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);margin-bottom:11px;border:1px solid #a78bfa45}
-.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s ease}
-.card:hover .avatar img{transform:scale(1.04)}
-.fallback{font-size:42px}
-.card h3{font-size:16px;margin:5px 0}
-.card p{font-size:12px;margin:7px 0 11px;overflow-wrap:anywhere}
-.card .tag{font-size:9px;letter-spacing:1px}
-.card button{width:100%;font-size:12px;margin-top:6px;padding:9px 7px}
-input{width:100%;background:#151329;color:var(--text);border:1px solid #ffffff28;border-radius:12px;padding:13px;margin:0 0 12px}
-.filters button{font-size:12px}
-.timeline-item{border-left:2px solid var(--purple);border-radius:0 12px 12px 0;margin:11px 0}
-.timeline-item strong{display:block;margin:5px 0}
-.timeline-item p{font-size:12px;margin:5px 0 10px}
+.stat,.card,.timeline-item,.feature-panel{min-width:0;background:#151329e8;border:1px solid var(--line);border-radius:16px;padding:13px}
+.stat strong{display:block;font-size:24px;margin-top:8px}.stat span{font-size:10px;color:var(--cyan);letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{padding:12px;overflow:hidden}
+.avatar{height:190px;position:relative;overflow:hidden;border-radius:12px;display:grid;place-items:center;font-size:36px;background:radial-gradient(circle at 50% 25%,#54458b,#17152e 72%);margin-bottom:11px;border:1px solid #a78bfa88;box-shadow:0 0 12px #8b5cf633}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s ease;filter:saturate(1.08) contrast(1.04)}
+.card:hover .avatar img{transform:scale(1.04)}.fallback{font-size:42px}
+.card h3{font-size:16px;margin:5px 0}.card p{font-size:12px;margin:7px 0 11px;overflow-wrap:anywhere}
+.card .tag{font-size:9px;letter-spacing:1px}.card button{width:100%;font-size:12px;margin-top:6px;padding:9px 7px}
+input,select{width:100%;background:#151329;color:var(--text);border:1px solid #ffffff28;border-radius:12px;padding:13px;margin:0 0 12px}
+.filters button,.chips button{font-size:12px}.timeline-item{border-left:2px solid var(--purple);border-radius:0 12px 12px 0;margin:11px 0}
+.timeline-item strong{display:block;margin:5px 0}.timeline-item p{font-size:12px;margin:5px 0 10px}
 .empty{color:var(--muted);background:#15132988;border:1px dashed #ffffff2a;padding:18px;border-radius:14px;font-size:13px}
 footer{text-align:center;padding:26px 18px 36px;color:var(--muted);font-size:11px;line-height:1.6}
-@media(min-width:600px){main{padding:24px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:32px}.avatar{height:230px}}
-@media(max-width:360px){.avatar{height:155px}.card{padding:9px}}
+.progress{height:7px;border-radius:99px;background:#ffffff16;overflow:hidden;margin:10px 0 16px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b5cf6,#67e8f9);transition:width .2s}
+.detail-layout{display:grid;grid-template-columns:minmax(110px,220px) 1fr;gap:16px;align-items:start}
+.detail-layout .avatar{height:270px}.pill{display:inline-block;background:#30244c;border:1px solid #a78bfa55;color:var(--cyan);border-radius:99px;padding:5px 9px;font-size:11px;margin:3px}
+.row-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.row-actions button{flex:1}
+.modal{position:fixed;inset:0;z-index:20;background:#05040ce8;overflow:auto;padding:18px;display:none}.modal.open{display:block}
+.modal-box{max-width:760px;margin:5vh auto;background:#121027;border:1px solid #a78bfa66;border-radius:20px;padding:18px;box-shadow:0 0 40px #8b5cf622}
+.modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.reading-card{display:flex;gap:12px;align-items:flex-start}.reading-icon{font-size:30px;background:#30244c;border-radius:12px;padding:12px}
+.checkline{display:flex;align-items:center;gap:9px;margin:10px 0}.checkline input{width:auto;margin:0;accent-color:#a78bfa}
+.small{font-size:12px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:600px){main{padding:24px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:32px}}
+@media(max-width:420px){.detail-layout{grid-template-columns:1fr}.detail-layout .avatar{height:230px}.two-col{grid-template-columns:1fr}.avatar{height:175px}}
 </style>
 </head>
 <body>
 <header>
 <div class="brand">✦ STARK INDUSTRIES // FAN PROJECT</div>
-<h1>Stark Archives</h1>
-<div class="muted">Multiverse Intelligence Database</div>
+<h1>Stark Archives</h1><div class="muted">Multiverse Intelligence Database · v4.0</div>
 </header>
 <main>
 <section class="hero">
 <div class="eyebrow">EARTH-616 // DATABASE ONLINE</div>
-<h2>Explore the<br>Multiverse.</h2>
-<p class="muted">Heroes. Villains. Timelines. Your personal archive of the Marvel universe.</p>
+<h2>Your personal<br>Marvel universe.</h2>
+<p class="muted">Character dossiers. Comic reading lists. MCU timeline. One archive for the multiverse.</p>
 <button class="primary" onclick="showTab('characters')">Access character files →</button>
 </section>
 <nav class="tabs" aria-label="Main navigation">
 <button class="active" data-tab="home" onclick="showTab('home')">⌂ Home</button>
 <button data-tab="characters" onclick="showTab('characters')">◉ Characters</button>
-<button data-tab="timeline" onclick="showTab('timeline')">◷ Timeline</button>
+<button data-tab="comics" onclick="showTab('comics')">▤ Comic lists</button>
+<button data-tab="timeline" onclick="showTab('timeline')">◷ MCU timeline</button>
 <button data-tab="collection" onclick="showTab('collection')">☆ My collection</button>
 </nav>
 <section id="home">
@@ -78,333 +78,103 @@ footer{text-align:center;padding:26px 18px 36px;color:var(--muted);font-size:11p
 <div class="stats">
 <div class="stat"><span>CHARACTERS</span><strong id="heroCount">52</strong></div>
 <div class="stat"><span>FAVOURITES</span><strong id="savedCount">0</strong></div>
-<div class="stat"><span>WATCHLIST</span><strong id="watchCount">0</strong></div>
+<div class="stat"><span>PROGRESS</span><strong id="progressCount">0%</strong></div>
 </div>
+<h3>Archive completion</h3><div class="progress"><span id="homeProgress"></span></div>
 <h3>Featured intelligence</h3><div id="featured" class="grid"></div>
+<div class="feature-panel" style="margin-top:18px">
+<span class="tag">COSMIC DIRECTIVE</span><h3>Where to begin?</h3>
+<p class="muted">Open a character dossier, choose a comic reading path, or mark your way through the MCU.</p>
+<div class="row-actions"><button onclick="showTab('comics')">Explore comics</button><button onclick="showTab('timeline')">Track MCU movies</button></div>
+</div>
 </section>
 <section id="characters" class="hidden">
-<h3>Character dossiers</h3>
-<p class="muted">Search heroes, villains, powers, aliases or teams.</p>
+<h3>Character dossiers</h3><p class="muted">Tap any card to open its dossier. Search names, powers, aliases or teams.</p>
 <input id="search" type="search" placeholder="e.g. Spider-Man, magic, Avengers…" aria-label="Search characters">
 <div id="filters" class="filters"></div>
 <div class="section-head"><span class="muted" id="resultCount">52 files</span><button onclick="resetFilters()">Reset filters</button></div>
 <div id="characterGrid" class="grid"></div>
 </section>
+<section id="comics" class="hidden">
+<h3>Comic reading protocols</h3>
+<p class="muted">Curated starting points. These are reading recommendations, not links to pirated comics.</p>
+<div class="chips" id="comicFilters">
+<button class="active" data-path="all" onclick="setComicPath('all')">All paths</button>
+<button data-path="starter" onclick="setComicPath('starter')">New reader</button>
+<button data-path="cosmic" onclick="setComicPath('cosmic')">Cosmic events</button>
+<button data-path="hero" onclick="setComicPath('hero')">Character classics</button>
+</div>
+<div class="section-head"><span class="muted" id="comicCount"></span><a href="https://www.marvel.com/comics/series" target="_blank" rel="noopener" style="color:var(--cyan)">Marvel catalogue ↗</a></div>
+<div id="comicList"></div>
+<p class="small muted">Availability varies by region. Check your local library, bookstore, official digital comic service or publisher catalogue.</p>
+</section>
 <section id="timeline" class="hidden">
-<h3>MCU timeline</h3>
-<p class="muted">Starter selection ordered by release year, not in-universe chronology.</p>
+<h3>Marvel Cinematic Universe</h3>
+<p class="muted">Track the Infinity Saga and beyond. Release order is the easiest first-watch route; story chronology is a different order.</p>
+<div class="chips">
+<button class="active" id="releaseMode" onclick="setTimelineMode('release')">Release order</button>
+<button id="storyMode" onclick="setTimelineMode('story')">Story order</button>
+</div>
+<div class="stats">
+<div class="stat"><span>WATCHED</span><strong id="watchedCount">0</strong></div>
+<div class="stat"><span>REMAINING</span><strong id="remainingCount">0</strong></div>
+<div class="stat"><span>COMPLETION</span><strong id="timelinePercent">0%</strong></div>
+</div>
+<div class="progress"><span id="timelineProgress"></span></div>
+<div class="section-head"><span class="muted" id="timelineLabel">Movies in release order</span><button onclick="clearWatched()">Reset progress</button></div>
 <div id="timelineList"></div>
 </section>
 <section id="collection" class="hidden">
-<h3>My collection</h3>
-<p class="muted">Saved on this device and browser.</p>
+<h3>My collection</h3><p class="muted">Your progress is stored in this browser on this device.</p>
 <h3>★ Favourite characters</h3><div id="favourites" class="grid"></div>
-<h3>◷ Watchlist</h3><div id="watchlist"></div>
+<h3>✓ Watched MCU movies</h3><div id="watchedList"></div>
+<h3>▤ Read comics</h3><div id="readList"></div>
+<button onclick="exportData()">Export my collection</button>
+<label class="checkline"><input id="importFile" type="file" accept="application/json" onchange="importData(event)"> Import a saved collection JSON</label>
 </section>
 </main>
-<footer>Unofficial fan-made project, not affiliated with Marvel or Disney. Character names and related properties belong to their respective owners.<br>Stark Archives v3.0 · Built by a fan, for fans.</footer>
-
+<footer>Unofficial fan-made project, not affiliated with Marvel or Disney. Character names and related properties belong to their respective owners.<br>Stark Archives v4.0 · Built by a fan, for fans.</footer>
+<div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-label="Character dossier">
+<div class="modal-box">
+<div class="modal-top"><span class="tag">CHARACTER DOSSIER</span><button onclick="closeDetail()" aria-label="Close dossier">✕ Close</button></div>
+<div id="detailContent"></div>
+</div>
+</div>
 <script>
 const characters = [
-{id:"ironman",name:"Iron Man",alias:"Tony Stark",power:"Genius inventor · Powered armor",team:"Avengers",icon:"⚙️",featured:true},
-{id:"captainamerica",name:"Captain America",alias:"Steve Rogers",power:"Super-soldier strength · Vibranium shield",team:"Avengers",icon:"🛡️",featured:true},
-{id:"thor",name:"Thor",alias:"Thor Odinson",power:"Thunder · Asgardian strength",team:"Avengers",icon:"⚡",featured:true},
-{id:"hulk",name:"Hulk",alias:"Bruce Banner",power:"Super strength · Regeneration",team:"Avengers",icon:"💚"},
-{id:"blackwidow",name:"Black Widow",alias:"Natasha Romanoff",power:"Espionage · Elite combat",team:"Avengers",icon:"🕷️"},
-{id:"hawkeye",name:"Hawkeye",alias:"Clint Barton",power:"Master archer · Tactical expertise",team:"Avengers",icon:"🏹"},
-{id:"falcon",name:"Falcon",alias:"Sam Wilson",power:"Flight · Tactical combat",team:"Avengers",icon:"🦅"},
-{id:"warmachine",name:"War Machine",alias:"James Rhodes",power:"Powered armor · Heavy weapons",team:"Avengers",icon:"🤖"},
-{id:"vision",name:"Vision",alias:"Vision",power:"Density control · Energy projection",team:"Avengers",icon:"💎"},
-{id:"antman",name:"Ant-Man",alias:"Scott Lang",power:"Size manipulation · Pym technology",team:"Avengers",icon:"🐜"},
-{id:"wasp",name:"The Wasp",alias:"Hope van Dyne",power:"Size manipulation · Flight",team:"Avengers",icon:"🐝"},
-{id:"captainmarvel",name:"Captain Marvel",alias:"Carol Danvers",power:"Cosmic energy · Flight",team:"Avengers",icon:"🌟"},
-{id:"strange",name:"Doctor Strange",alias:"Stephen Strange",power:"Mystic arts · Dimensional travel",team:"Mystic Arts",icon:"🔮",featured:true},
-{id:"wanda",name:"Scarlet Witch",alias:"Wanda Maximoff",power:"Chaos magic · Reality manipulation",team:"Mystic Arts",icon:"🔴",featured:true},
-{id:"wong",name:"Wong",alias:"Wong",power:"Sorcery · Portal creation",team:"Mystic Arts",icon:"✨"},
-{id:"america",name:"America Chavez",alias:"America Chavez",power:"Star portals · Multiverse travel",team:"Multiverse",icon:"⭐"},
-{id:"moonknight",name:"Moon Knight",alias:"Marc Spector",power:"Combat skills · Khonshu's powers",team:"Street Level",icon:"🌙"},
-{id:"spiderman",name:"Spider-Man",alias:"Peter Parker",power:"Spider-sense · Wall crawling",team:"Spider-Verse",icon:"🕸️",featured:true},
-{id:"miles",name:"Miles Morales",alias:"Miles Morales",power:"Venom blast · Camouflage",team:"Spider-Verse",icon:"🕷️"},
-{id:"daredevil",name:"Daredevil",alias:"Matt Murdock",power:"Enhanced senses · Martial arts",team:"Street Level",icon:"👊"},
-{id:"punisher",name:"The Punisher",alias:"Frank Castle",power:"Military tactics · Weapons expertise",team:"Street Level",icon:"💀"},
-{id:"luke",name:"Luke Cage",alias:"Luke Cage",power:"Super strength · Bulletproof skin",team:"Street Level",icon:"💪"},
-{id:"jessica",name:"Jessica Jones",alias:"Jessica Jones",power:"Super strength · Investigation",team:"Street Level",icon:"🔎"},
-{id:"shangchi",name:"Shang-Chi",alias:"Shang-Chi",power:"Martial arts · Ten Rings",team:"Heroes",icon:"🥋"},
-{id:"blackpanther",name:"Black Panther",alias:"T'Challa",power:"Enhanced abilities · Vibranium suit",team:"Wakanda",icon:"🐈‍⬛"},
-{id:"shuri",name:"Shuri",alias:"Shuri",power:"Scientific genius · Wakandan technology",team:"Wakanda",icon:"🔬"},
-{id:"starlord",name:"Star-Lord",alias:"Peter Quill",power:"Blasters · Spaceflight expertise",team:"Guardians",icon:"🚀",featured:true},
-{id:"gamora",name:"Gamora",alias:"Gamora",power:"Elite combat · Swordsmanship",team:"Guardians",icon:"⚔️"},
-{id:"rocket",name:"Rocket Raccoon",alias:"Rocket",power:"Engineering · Weapons expertise",team:"Guardians",icon:"🦝"},
-{id:"groot",name:"Groot",alias:"Groot",power:"Plant manipulation · Regeneration",team:"Guardians",icon:"🌳"},
-{id:"drax",name:"Drax",alias:"Drax the Destroyer",power:"Combat prowess · Enhanced strength",team:"Guardians",icon:"💥"},
-{id:"nebula",name:"Nebula",alias:"Nebula",power:"Cybernetic upgrades · Combat",team:"Guardians",icon:"🔧"},
-{id:"betaraybill",name:"Beta Ray Bill",alias:"Beta Ray Bill",power:"Super strength · Stormbreaker",team:"Cosmic",icon:"⚡"},
-{id:"loki",name:"Loki",alias:"God of Mischief",power:"Illusions · Sorcery",team:"Asgard",icon:"🐍",featured:true},
-{id:"hela",name:"Hela",alias:"Goddess of Death",power:"Necroswords · Asgardian power",team:"Asgard",icon:"💀"},
-{id:"valkyrie",name:"Valkyrie",alias:"Brunnhilde",power:"Elite warrior · Pegasus rider",team:"Asgard",icon:"🐎"},
-{id:"eternity",name:"Eternity",alias:"Cosmic Entity",power:"Cosmic omnipresence",team:"Cosmic Entities",icon:"🌌"},
-{id:"reed",name:"Mister Fantastic",alias:"Reed Richards",power:"Elasticity · Scientific genius",team:"Fantastic Four",icon:"🧪"},
-{id:"sue",name:"Invisible Woman",alias:"Sue Storm",power:"Invisibility · Force fields",team:"Fantastic Four",icon:"🫥"},
-{id:"johnny",name:"Human Torch",alias:"Johnny Storm",power:"Flame generation · Flight",team:"Fantastic Four",icon:"🔥"},
-{id:"ben",name:"The Thing",alias:"Ben Grimm",power:"Rock-like body · Super strength",team:"Fantastic Four",icon:"🪨"},
-{id:"wolverine",name:"Wolverine",alias:"Logan",power:"Healing factor · Adamantium claws",team:"X-Men",icon:"🐺"},
-{id:"storm",name:"Storm",alias:"Ororo Munroe",power:"Weather manipulation",team:"X-Men",icon:"🌩️"},
-{id:"magneto",name:"Magneto",alias:"Erik Lehnsherr",power:"Magnetism · Magnetic fields",team:"X-Men",icon:"🧲"},
-{id:"cyclops",name:"Cyclops",alias:"Scott Summers",power:"Optic energy blasts",team:"X-Men",icon:"🔴"},
-{id:"thanos",name:"Thanos",alias:"The Mad Titan",power:"Titanic strength · Infinity Stones",team:"Villains",icon:"🟣",featured:true},
-{id:"ultron",name:"Ultron",alias:"Ultron",power:"Artificial intelligence · Robotics",team:"Villains",icon:"🤖"},
-{id:"doom",name:"Doctor Doom",alias:"Victor von Doom",power:"Sorcery · Advanced technology",team:"Villains",icon:"👑"},
-{id:"greengoblin",name:"Green Goblin",alias:"Norman Osborn",power:"Goblin serum · Glider technology",team:"Villains",icon:"🎃"},
-{id:"kang",name:"Kang",alias:"The Conqueror",power:"Time technology · Advanced armor",team:"Villains",icon:"⌛"},
-{id:"redskull",name:"Red Skull",alias:"Johann Schmidt",power:"Strategic genius · Leadership",team:"Villains",icon:"☠️"},
-{id:"kingpin",name:"Kingpin",alias:"Wilson Fisk",power:"Criminal empire · Physical strength",team:"Villains",icon:"♟️"}
-];
-
-const movies=[
-{year:2008,title:"Iron Man"},
-{year:2012,title:"The Avengers"},
-{year:2014,title:"Guardians of the Galaxy"},
-{year:2016,title:"Doctor Strange"},
-{year:2018,title:"Avengers: Infinity War"},
-{year:2019,title:"Avengers: Endgame"},
-{year:2021,title:"Spider-Man: No Way Home"},
-{year:2022,title:"Doctor Strange in the Multiverse of Madness"},
-{year:2022,title:"Black Panther: Wakanda Forever"}
-];
-
-function load(key){
-  try{return JSON.parse(localStorage.getItem(key))||[]}
-  catch(e){return[]}
-}
-
-let favourites=load("stark-favourites");
-let watchlist=load("stark-watchlist");
-let activeTeam="All";
-const imageByName={};
-
-function normalizeName(name){
-  return name.toLowerCase().replace(/[^a-z0-9]/g,"");
-}
-
-/* Alternative names used by the image library */
-const imageAliases={
-  ironman:["Iron Man","Ironman"],
-  captainamerica:["Captain America"],
-  thor:["Thor"],
-  hulk:["Hulk"],
-  blackwidow:["Black Widow"],
-  hawkeye:["Hawkeye"],
-  falcon:["Falcon","Captain America II"],
-  warmachine:["War Machine"],
-  vision:["Vision"],
-  antman:["Ant-Man","Ant Man"],
-  wasp:["Wasp"],
-  captainmarvel:["Captain Marvel"],
-  strange:["Doctor Strange"],
-  wanda:["Scarlet Witch"],
-  wong:["Wong"],
-  america:["America Chavez"],
-  moonknight:["Moon Knight"],
-  spiderman:["Spider-Man","Spider Man"],
-  miles:["Spider-Man","Miles Morales"],
-  daredevil:["Daredevil"],
-  punisher:["Punisher"],
-  luke:["Luke Cage"],
-  jessica:["Jessica Jones"],
-  shangchi:["Shang-Chi"],
-  blackpanther:["Black Panther"],
-  shuri:["Shuri"],
-  starlord:["Star-Lord","Star Lord"],
-  gamora:["Gamora"],
-  rocket:["Rocket Raccoon","Rocket"],
-  groot:["Groot"],
-  drax:["Drax the Destroyer","Drax"],
-  nebula:["Nebula"],
-  betaraybill:["Beta Ray Bill"],
-  loki:["Loki"],
-  hela:["Hela"],
-  valkyrie:["Valkyrie"],
-  eternity:["Eternity"],
-  reed:["Mister Fantastic","Mr Fantastic"],
-  sue:["Invisible Woman"],
-  johnny:["Human Torch"],
-  ben:["Thing"],
-  wolverine:["Wolverine"],
-  storm:["Storm"],
-  magneto:["Magneto"],
-  cyclops:["Cyclops"],
-  thanos:["Thanos"],
-  ultron:["Ultron"],
-  doom:["Doctor Doom"],
-  greengoblin:["Green Goblin"],
-  kang:["Kang"],
-  redskull:["Red Skull"],
-  kingpin:["Kingpin"]
-};
-
-function save(){
-  try{
-    localStorage.setItem("stark-favourites",JSON.stringify(favourites));
-    localStorage.setItem("stark-watchlist",JSON.stringify(watchlist));
-  }catch(e){}
-}
-
-function showTab(tab){
-  document.querySelectorAll("main > section").forEach(s=>
-    s.classList.toggle("hidden",s.id!==tab)
-  );
-  document.querySelectorAll("[data-tab]").forEach(b=>
-    b.classList.toggle("active",b.dataset.tab===tab)
-  );
-  render();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* Load comic-style character portraits from a public image dataset */
-async function loadCharacterImages(){
-  try{
-    const response=await fetch(
-      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json"
-    );
-    if(!response.ok) throw new Error("Image library unavailable");
-
-    const heroes=await response.json();
-
-    characters.forEach(c=>{
-      const names=[
-        c.name,
-        c.alias,
-        ...(imageAliases[c.id]||[])
-      ].map(normalizeName);
-
-      let match=heroes.find(h=>
-        h.biography?.publisher==="Marvel Comics" &&
-        names.includes(normalizeName(h.name))
-      );
-
-      /* Prefer an exact name match before trying aliases */
-      if(!match){
-        const aliasNames=(imageAliases[c.id]||[]).map(normalizeName);
-        match=heroes.find(h=>
-          h.biography?.publisher==="Marvel Comics" &&
-          aliasNames.includes(normalizeName(h.name))
-        );
-      }
-
-      if(match?.images?.lg){
-        imageByName[c.id]=match.images.lg;
-      }
-    });
-  }catch(error){
-    console.warn("Character images could not be loaded:",error);
-  }
-
-  render();
-}
-
-function characterCard(c){
-  const image=imageByName[c.id];
-
-  return `<article class="card">
-    <div class="avatar">
-      <span class="fallback" aria-hidden="true">${c.icon}</span>
-      ${image?`<img src="${image}" alt="${c.name} comic-style portrait"
-        loading="lazy"
-        onerror="this.remove()">`:""}
-    </div>
-    <span class="tag">${c.team.toUpperCase()}</span>
-    <h3>${c.name}</h3>
-    <p class="muted">${c.alias}</p>
-    <p>${c.power}</p>
-    <button onclick="toggleFavourite('${c.id}')">
-      ${favourites.includes(c.id)?"★ Saved":"☆ Add favourite"}
-    </button>
-  </article>`;
-}
-
-function toggleFavourite(id){
-  favourites=favourites.includes(id)
-    ?favourites.filter(x=>x!==id)
-    :[...favourites,id];
-  save();
-  render();
-}
-
-function toggleMovie(title){
-  watchlist=watchlist.includes(title)
-    ?watchlist.filter(x=>x!==title)
-    :[...watchlist,title];
-  save();
-  render();
-}
-
-function resetFilters(){
-  activeTeam="All";
-  document.getElementById("search").value="";
-  render();
-}
-
-function render(){
-  const searchInput=document.getElementById("search");
-  const query=(searchInput?searchInput.value:"").toLowerCase();
-  const teams=["All",...new Set(characters.map(c=>c.team))];
-
-  document.getElementById("filters").innerHTML=teams.map(t=>
-    `<button class="${activeTeam===t?"active":""}"
-      onclick="activeTeam=${JSON.stringify(t)};render()">${t}</button>`
-  ).join("");
-
-  const filtered=characters.filter(c=>
-    (activeTeam==="All"||c.team===activeTeam)&&
-    [c.name,c.alias,c.power,c.team].join(" ").toLowerCase().includes(query)
-  );
-
-  document.getElementById("resultCount").textContent=
-    `${filtered.length} character ${filtered.length===1?"file":"files"}`;
-
-  document.getElementById("characterGrid").innerHTML=
-    filtered.length
-      ?filtered.map(characterCard).join("")
-      :'<div class="empty">No matching files found. Try another search or reset filters.</div>';
-
-  document.getElementById("featured").innerHTML=
-    characters.filter(c=>c.featured).slice(0,6).map(characterCard).join("");
-
-  document.getElementById("heroCount").textContent=characters.length;
-  document.getElementById("savedCount").textContent=favourites.length;
-  document.getElementById("watchCount").textContent=watchlist.length;
-
-  document.getElementById("favourites").innerHTML=
-    characters.filter(c=>favourites.includes(c.id)).map(characterCard).join("")||
-    '<div class="empty">No favourites yet. Save a character!</div>';
-
-  document.getElementById("timelineList").innerHTML=movies.map(m=>
-    `<article class="timeline-item">
-      <span class="tag">${m.year}</span>
-      <strong>${m.title}</strong>
-      <p class="muted">MCU release selection</p>
-      <button onclick="toggleMovie(${JSON.stringify(m.title)})">
-        ${watchlist.includes(m.title)?"✓ In watchlist":"＋ Add to watchlist"}
-      </button>
-    </article>`
-  ).join("");
-
-  document.getElementById("watchlist").innerHTML=
-    watchlist.map(t=>
-      `<article class="timeline-item">
-        <strong>${t}</strong>
-        <button onclick="toggleMovie(${JSON.stringify(t)})">Remove</button>
-      </article>`
-    ).join("")||
-    '<div class="empty">Your watchlist is empty.</div>';
-}
-
-document.getElementById("search").addEventListener("input",render);
-
-/* Render the app immediately, then load portraits in the background */
-render();
-loadCharacterImages();
-</script>
-</body>
-                   </html>
- 
+{id:"ironman",name:"Iron Man",alias:"Tony Stark",power:"Genius inventor · Powered armor",team:"Avengers",icon:"⚙️",featured:true,description:"A brilliant inventor who builds advanced armor and turns his intellect into one of Earth's greatest defenses.",related:["captainamerica","spiderman","warmachine"]},
+{id:"captainamerica",name:"Captain America",alias:"Steve Rogers",power:"Super-soldier strength · Vibranium shield",team:"Avengers",icon:"🛡️",featured:true,description:"A principled super-soldier known for courage, leadership and an unbreakable shield.",related:["ironman","falcon","winter"]},
+{id:"thor",name:"Thor",alias:"Thor Odinson",power:"Thunder · Asgardian strength",team:"Avengers",icon:"⚡",featured:true,description:"The Asgardian thunder god wields immense strength and commands lightning.",related:["loki","hela","valkyrie"]},
+{id:"hulk",name:"Hulk",alias:"Bruce Banner",power:"Super strength · Regeneration",team:"Avengers",icon:"💚",description:"A scientist whose transformations unleash strength that rises with his anger.",related:["ironman","thor","thanos"]},
+{id:"blackwidow",name:"Black Widow",alias:"Natasha Romanoff",power:"Espionage · Elite combat",team:"Avengers",icon:"🕷️",description:"A highly trained spy and tactician whose greatest weapons are skill and determination.",related:["hawkeye","captainamerica","ironman"]},
+{id:"hawkeye",name:"Hawkeye",alias:"Clint Barton",power:"Master archer · Tactical expertise",team:"Avengers",icon:"🏹",description:"An expert marksman whose precision makes him a formidable Avenger.",related:["blackwidow","falcon","captainamerica"]},
+{id:"falcon",name:"Falcon",alias:"Sam Wilson",power:"Flight · Tactical combat",team:"Avengers",icon:"🦅",description:"A skilled aerial combatant using advanced wing technology and battlefield experience.",related:["captainamerica","ironman","blackpanther"]},
+{id:"warmachine",name:"War Machine",alias:"James Rhodes",power:"Powered armor · Heavy weapons",team:"Avengers",icon:"🤖",description:"A military officer equipped with a heavily armed suit of powered armor.",related:["ironman","captainamerica","thanos"]},
+{id:"vision",name:"Vision",alias:"Vision",power:"Density control · Energy projection",team:"Avengers",icon:"💎",description:"An artificial being with extraordinary powers, a thoughtful nature and a complex sense of humanity.",related:["wanda","ultron","ironman"]},
+{id:"antman",name:"Ant-Man",alias:"Scott Lang",power:"Size manipulation · Pym technology",team:"Avengers",icon:"🐜",description:"A hero who uses Pym technology to change size and access the quantum realm.",related:["wasp","ironman","captainamerica"]},
+{id:"wasp",name:"The Wasp",alias:"Hope van Dyne",power:"Size manipulation · Flight",team:"Avengers",icon:"🐝",description:"A precise and capable hero combining shrinking technology with flight and energy blasts.",related:["antman","hulk","captainamerica"]},
+{id:"captainmarvel",name:"Captain Marvel",alias:"Carol Danvers",power:"Cosmic energy · Flight",team:"Avengers",icon:"🌟",description:"A cosmic-powered hero able to fly, absorb energy and unleash tremendous force.",related:["starlord","thanos","ironman"]},
+{id:"strange",name:"Doctor Strange",alias:"Stephen Strange",power:"Mystic arts · Dimensional travel",team:"Mystic Arts",icon:"🔮",featured:true,description:"A former surgeon who studies the mystic arts to protect reality from supernatural threats.",related:["wong","wanda","spiderman"]},
+{id:"wanda",name:"Scarlet Witch",alias:"Wanda Maximoff",power:"Chaos magic · Reality manipulation",team:"Mystic Arts",icon:"🔴",featured:true,description:"A powerful magic wielder whose abilities can alter matter, minds and reality itself.",related:["vision","strange","thanos"]},
+{id:"wong",name:"Wong",alias:"Wong",power:"Sorcery · Portal creation",team:"Mystic Arts",icon:"✨",description:"A master sorcerer and steadfast defender of the mystic arts.",related:["strange","wanda","thor"]},
+{id:"america",name:"America Chavez",alias:"America Chavez",power:"Star portals · Multiverse travel",team:"Multiverse",icon:"⭐",description:"A multiverse traveler able to punch star-shaped portals between realities.",related:["strange","wanda","spiderman"]},
+{id:"moonknight",name:"Moon Knight",alias:"Marc Spector",power:"Combat skills · Khonshu's powers",team:"Street Level",icon:"🌙",description:"A complex vigilante connected to the Egyptian moon god Khonshu.",related:["daredevil","punisher","kingpin"]},
+{id:"spiderman",name:"Spider-Man",alias:"Peter Parker",power:"Spider-sense · Wall crawling",team:"Spider-Verse",icon:"🕸️",featured:true,description:"A quick-witted hero with enhanced agility, wall-crawling, a danger sense and a strong responsibility to help others.",related:["miles","ironman","strange"]},
+{id:"miles",name:"Miles Morales",alias:"Miles Morales",power:"Venom blast · Camouflage",team:"Spider-Verse",icon:"🕷️",description:"A Spider-Hero with bio-electric venom blasts and camouflage abilities.",related:["spiderman","greenpanther","kingpin"]},
+{id:"daredevil",name:"Daredevil",alias:"Matt Murdock",power:"Enhanced senses · Martial arts",team:"Street Level",icon:"👊",description:"A blind lawyer whose enhanced senses and martial arts make him a formidable protector of Hell's Kitchen.",related:["kingpin","punisher","jessica"]},
+{id:"punisher",name:"The Punisher",alias:"Frank Castle",power:"Military tactics · Weapons expertise",team:"Street Level",icon:"💀",description:"A relentless vigilante who wages a personal war against organized crime.",related:["daredevil","kingpin","moonknight"]},
+{id:"luke",name:"Luke Cage",alias:"Luke Cage",power:"Super strength · Bulletproof skin",team:"Street Level",icon:"💪",description:"A neighborhood protector with immense strength and nearly impenetrable skin.",related:["jessica","daredevil","kingpin"]},
+{id:"jessica",name:"Jessica Jones",alias:"Jessica Jones",power:"Super strength · Investigation",team:"Street Level",icon:"🔎",description:"A private investigator with superhuman strength and a sharp, no-nonsense approach.",related:["luke","daredevil","kingpin"]},
+{id:"shangchi",name:"Shang-Chi",alias:"Shang-Chi",power:"Martial arts · Ten Rings",team:"Heroes",icon:"🥋",description:"A master martial artist who becomes linked to the mysterious power of the Ten Rings.",related:["ironman","blackpanther","captainamerica"]},
+{id:"blackpanther",name:"Black Panther",alias:"T'Challa",power:"Enhanced abilities · Vibranium suit",team:"Wakanda",icon:"🐈‍⬛",description:"Wakanda's protector, combining enhanced abilities, advanced technology and royal responsibility.",related:["shuri","falcon","killmonger"]},
+{id:"shuri",name:"Shuri",alias:"Shuri",power:"Scientific genius · Wakandan technology",team:"Wakanda",icon:"🔬",description:"A brilliant inventor and scientist who pushes Wakandan technology forward.",related:["blackpanther","ironman","reed"]},
+{id:"starlord",name:"Star-Lord",alias:"Peter Quill",power:"Blasters · Spaceflight expertise",team:"Guardians",icon:"🚀",featured:true,description:"A spacefaring adventurer whose questionable plans often lead the Guardians into saving the galaxy.",related:["gamora","rocket","thanos"]},
+{id:"gamora",name:"Gamora",alias:"Gamora",power:"Elite combat · Swordsmanship",team:"Guardians",icon:"⚔️",description:"A formidable warrior with a complicated history and extraordinary combat skills.",related:["nebula","starlord","thanos"]},
+{id:"rocket",name:"Rocket Raccoon",alias:"Rocket",power:"Engineering · Weapons expertise",team:"Guardians",icon:"🦝",description:"A sharp-tongued engineer and tactical genius with a talent for building unlikely weapons.",related:["groot","starlord","nebula"]},
+{id:"groot",name:"Groot",alias:"Groot",power:"Plant manipulation · Regeneration",team:"Guardians",icon:"🌳",description:"A tree-like alien capable of regeneration and controlling his own plant-like body.",related:["rocket","drax","starlord"]},
+{id:"drax",name:"Drax",alias:"Drax the Destroyer",power:"Combat prowess · Enhanced strength",team:"Guardians",icon:"💥",description:"A powerful fighter whose direct manner is as distinctive as his strength.",related:["starlord","gamora","rocket"]},
+{id:"nebula",name:"Nebula",alias:"Nebula",power:"Cybernetic upgrades · Combat",team:"Guardians",icon:"🔧",description:"A cybernetically enhanced warrior whose life is shaped by rivalry, survival and family.",related:["gamora","rocket","thanos"]},
+{id:"betaraybill",name:"Beta Ray Bill",alias:"Beta Ray Bill",power:"Super strength · Stormbreaker",team:"Cosmic",icon:"⚡",description:"A noble alien champion worthy of wielding a mighty enchanted weapon.",related:["thor","loki","hela"]},
+{id:"loki",name:"Loki",alias:"God of Mischief",power:"Illusions · Sorcery",team:"Asgard",icon:"🐍",featured:true,description:"The Asgardian trickster combines magic, ambition and a complicated search for purpose.",related:["thor","hela","thanos"]},
+{id:"hela",name:"Hela",alias:"Goddess of Death",power:"Necroswords · Asgardian power",team:"Asgard",icon:"💀",description:"A devastating Asgardian force who commands blades and vast destructive power.",related:["thor","loki","valkyrie"]},
+{id:"valkyrie",name
